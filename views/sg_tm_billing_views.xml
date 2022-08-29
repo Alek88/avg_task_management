@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="billing_tree_view" model="ir.ui.view">
+        <field name="name">billing.tree.view</field>
+        <field name="model">sg.tm.billing</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>   
+                <field name="employee_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="billing_form_view" model="ir.ui.view">
+        <field name="name">billing.form.view</field>
+        <field name="model">sg.tm.billing</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="active"/>
+                    <h2><strong><field name="name"/></strong></h2>
+                    <group col="4">
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <group col="4">  
+                        <field name="project_id"/>
+                        <field name="partner_id"/>  
+                    </group>
+                    <group>
+                        <field name="employee_id"/> 
+                    </group>
+                    <group col="6">
+                        <field name="price"/> 
+                        <field name="summ"/>
+                        <field name="currency_id"/>    
+                    </group>  
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id='action_billing' model='ir.actions.act_window'> 
+        <field name='name'>Billing</field>
+        <field name='res_model'>sg.tm.billing</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+              Create your first billing.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_billing'
+                name='Billing'
+                parent='menu_task_scheduling'
+                action='action_billing'
+                sequence='300'
+                />
+                
+</odoo>

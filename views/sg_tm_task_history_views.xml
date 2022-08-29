@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="task_history_tree_view" model="ir.ui.view">
+        <field name="name">task.history.tree.view</field>
+        <field name="model">sg.tm.task.history</field>
+        <field name="arch" type="xml">
+            <tree create="0" default_order="record_date">
+                <field name="record_date"/>
+                <field name="task_id"/>
+                <field name="number_of_minut"/>
+                <field name="responsible_id"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+  
+    <record id="sg_tm_task_history_graph" model="ir.ui.view">
+        <field name="name">sg.tm.task.history.graph</field>
+        <field name="model">sg.tm.task.history</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="responsible_id" type="row"/>
+                <field name="number_of_minut" type="measure"/>
+                <field name="record_date" type="col" interval="month"/>
+            </graph>
+        </field>
+     </record> 
+    
+    <record id='action_task_history' model='ir.actions.act_window'> 
+        <field name='name'>Task history</field>
+        <field name='res_model'>sg.tm.task.history</field> 
+        <field name='view_mode'>tree,graph</field>
+    </record>
+
+    <menuitem id='menu_task_history'
+                name='Task history'
+                parent='menu_referenced_data'
+                action='action_task_history'
+                sequence='300'
+                />
+
+</odoo>

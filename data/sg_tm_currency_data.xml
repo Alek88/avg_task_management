@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sg_tm_currency_1_data" model="res.currency" forcecreate="True">
+        <field name="name">UAN</field>
+        <field name="symbol">₴</field>
+    </record>
+      
+</odoo>

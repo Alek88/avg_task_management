@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sg_tm_price_1_data" model="sg.tm.price" forcecreate="True">
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_1_data"/>
+        <field name="employee_id" ref="sg_task_management.sg_tm_employee_1_data"/>
+        <field name="price">200</field>
+        <field name="currency_id" ref="sg_task_management.sg_tm_currency_1_data"/>
+    </record>  
+
+    <record id="sg_tm_price_2_data" model="sg.tm.price" forcecreate="True">
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_2_data"/>
+        <field name="employee_id" ref="sg_task_management.sg_tm_employee_1_data"/>
+        <field name="price">400</field>
+        <field name="currency_id" ref="sg_task_management.sg_tm_currency_1_data"/>
+    </record> 
+    
+    <record id="sg_tm_price_3_data" model="sg.tm.price" forcecreate="True">
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_3_data"/>
+        <field name="employee_id" ref="sg_task_management.sg_tm_employee_1_data"/>
+        <field name="price">450</field>
+        <field name="currency_id" ref="sg_task_management.sg_tm_currency_1_data"/>
+    </record>
+
+    <record id="sg_tm_price_4_data" model="sg.tm.price" forcecreate="True">
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_1_data"/>
+        <field name="employee_id" ref="sg_task_management.sg_tm_employee_2_data"/>
+        <field name="price">220</field>
+        <field name="currency_id" ref="sg_task_management.sg_tm_currency_1_data"/>
+    </record>  
+
+    <record id="sg_tm_price_5_data" model="sg.tm.price" forcecreate="True">
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_2_data"/>
+        <field name="employee_id" ref="sg_task_management.sg_tm_employee_2_data"/>
+        <field name="price">280</field>
+        <field name="currency_id" ref="sg_task_management.sg_tm_currency_1_data"/>
+    </record> 
+    
+    <record id="sg_tm_price_6_data" model="sg.tm.price" forcecreate="True">
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_3_data"/>
+        <field name="employee_id" ref="sg_task_management.sg_tm_employee_2_data"/>
+        <field name="price">500</field>
+        <field name="currency_id" ref="sg_task_management.sg_tm_currency_1_data"/>
+    </record>
+    
+</odoo>

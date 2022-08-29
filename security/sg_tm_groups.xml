@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="category_tm" model="ir.module.category">
+            <field name="name">Task management</field>
+            <field name="description">User access levels for the Task management</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_tm_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="category_tm"/>
+            <field name="comment">Users of the Task management</field>
+        </record>
+
+        <record id="group_tm_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="category_tm"/>
+            <field name="implied_ids" eval="[(4, ref('group_tm_user'))]"/>
+            <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
+            <field name="comment">Administrators of the Task management (full rights)</field>
+        </record>
+</odoo>

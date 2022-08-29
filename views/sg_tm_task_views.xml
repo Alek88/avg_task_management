@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="task_tree_view" model="ir.ui.view">
+        <field name="name">task.tree.view</field>
+        <field name="model">sg.tm.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="partner_id"/>
+                <field name="task_date"/>
+                <field name="project_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="task_kanban_view" model="ir.ui.view">
+        <field name="name">task.kanban.view</field>
+        <field name="model">sg.tm.task</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="project_id" quick_create_view="sg_task_management.task_custom_form_kanban" sample="1">
+                <field name='name'/>
+                <field name="status"/>
+                <field name="task_date"/>
+                <field name="responsible_id"/>
+                <field name="number_of_minut"/>
+                <field name="description"/>
+                <field name="color"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <field name="author_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click #{kanban_color(record.color.raw_value)}">
+                            <div class="o_kanban_card_header_title">
+                                <div>
+                                    <div class="float-right text-right">
+                                        <h3><field name='status'/></h3>
+                                    </div>
+                                    <div>
+                                        <strong>Task: </strong>
+                                        <field name='name'/> 
+                                    </div>
+                                    <div>
+                                        <strong>Date: </strong>
+                                        <field name='task_date'/>
+                                    </div>
+                                    <div>
+                                        <strong>Duration: </strong>
+                                        <field name="number_of_minut"/>
+                                    </div> 
+                                    <div>
+                                        <strong>Responsible: </strong>
+                                        <field name='responsible_id'/>
+                                    </div>   
+                                </div>    
+                            </div>
+
+                            <div class="col-xs-12" style="height: 15px;"/>
+                          
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle btn"
+                                    data-toggle="dropdown" href="#">
+                                    <span class="fa fa-ellipsis-v" aria-hidden="true"/>
+                                </a>
+                                <div class="o_kanban_card_manage_setting row mt16">
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>  
+                                    </div>
+                                </div>
+                            </div> 
+                            
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_left">
+                                        <button class="btn btn-primary"
+                                                string="Set time"
+                                                name='%(sg_task_management.action_set_time_wizard)d'
+                                                groups='sg_task_management.group_tm_user'
+                                                type="action">
+                                            <span>Set time</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>                       
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> 
+
+    <record id="task_form_view" model="ir.ui.view">
+        <field name="name">task.form.view</field>
+        <field name="model">sg.tm.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="active"/>
+                <group>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="author_id"/>
+                    <field name="responsible_id"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="task_date"/>
+                    <field name="number_of_minut"/>
+                    <field name="description"/>
+                </group>  
+            </form>
+        </field>
+    </record>
+
+    <record id="task_custom_form_kanban" model="ir.ui.view">
+        <field name="name">task.custom.form.kanban</field>
+        <field name="model">sg.tm.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <h2><strong><field name="name"/></strong></h2>
+                <group col="4">
+                    <field name="responsible_id"/>
+                    <field name="author_id"/>
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                    <field name="number_of_minut"/>
+                    <field name="task_date"/>     
+                </group>
+                <notebook>
+                    <page string="Description">
+                        <field name="description"/>
+                    </page>
+                </notebook>
+                
+            </form>
+         </field>
+     </record>
+
+    <record id="sg_tm_task_pivot" model="ir.ui.view">
+        <field name="name">sg.tm.task.pivot</field>
+        <field name="model">sg.tm.task</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="project_id" type="row"/>
+                <field name="responsible_id" type="row"/>
+                <field name="status" type="row"/>
+                <field name="number_of_minut" type="measure"/>
+                <field name="task_date" interval="day" type="col"/>
+            </pivot>
+        </field>
+     </record> 
+    
+    <record id='action_task' model='ir.actions.act_window'> 
+        <field name='name'>Task</field>
+        <field name='res_model'>sg.tm.task</field> 
+        <field name='view_mode'>kanban,tree,form,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+              Create your first task.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_task_for_partner" model="ir.actions.act_window">
+        <field name="name">Task</field>
+        <field name="res_model">sg.tm.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field> 
+    </record>
+
+    <menuitem id='menu_task'
+                name='Task'
+                parent='menu_task_scheduling'
+                action='action_task'
+                sequence='100'
+                />
+                
+</odoo>

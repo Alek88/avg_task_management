@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sg_tm_project_1_data" model="sg.tm.project" forcecreate="True">
+        <field name="name">Project 1 DEMO</field>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_1_data"/>
+    </record>  
+
+    <record id="sg_tm_project_2_data" model="sg.tm.project" forcecreate="True">
+        <field name="name">Project 2 DEMO</field>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_2_data"/>
+    </record> 
+    
+    <record id="sg_tm_project_3_data" model="sg.tm.project" forcecreate="True">
+        <field name="name">Project 3 DEMO</field>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_3_data"/>
+    </record>
+     
+</odoo>

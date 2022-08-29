@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="menu_tm_root" model="ir.ui.menu">
+                <field name="name">Task management</field>
+                <field name="web_icon">sg_task_management, static/description/icon.png</field>
+                <field name="sequence" eval="100"/>
+        </record>
+
+        <menuitem id="menu_task_scheduling"
+                name="Task scheduling"
+                parent="menu_tm_root"
+                sequence="100"
+                />
+        
+        <menuitem id="menu_referenced_data"
+                name="Referenced data"
+                parent="menu_tm_root"
+                sequence="200"
+                />
+
+</odoo>

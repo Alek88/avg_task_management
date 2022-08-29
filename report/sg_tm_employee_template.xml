@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <template id="sg_tm_employee_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <h2>
+                    <div style="text-align:right;">
+                        <strong>Employee: </strong>
+                        <t t-esc="doc.name"/>
+                        <br/> 
+                        <strong>User: </strong>
+                        <span t-esc="doc.user_id.name"/>        
+                    </div>
+                </h2>
+                <div>
+                    <br/>
+                    <strong>Tasks: </strong>
+                    <table class="table-bordered"
+                           style="border: 1px solid black;"
+                           width="100%">
+                        <tr>
+                            <th>
+                                <t>Project</t>
+                            </th>
+                            <th>
+                                <t>Author</t>
+                            </th>
+                            <th>
+                                <t>Status</t>
+                            </th>
+                            <th>
+                                <t>Task date</t>
+                            </th>
+                            <th>
+                                <t>Duration</t>
+                            </th>
+                            <th>
+                                <t>Description</t>
+                            </th>
+                        </tr>
+                        
+                        <t t-foreach="doc.task_ids" t-as="task">         
+                            <tr style="border: 1px solid black;"> 
+                                
+                                <th tyle="border: 1px solid black;"> 
+                                    <div t-field="task.project_id"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <div t-field="task.author_id"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <div t-field="task.status"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <div t-field="task.task_date"/>
+                                </th> 
+                                <th tyle="border: 1px solid black;"> 
+                                    <div t-field="task.number_of_minut"/>
+                                </th> 
+                                <th tyle="border: 1px solid black;"> 
+                                    <div t-field="task.description"/>
+                                </th>     
+                            </tr>
+                        </t>         
+                    </table>
+                </div>
+                <br/>
+                <strong>Full name: </strong>
+                <t t-esc="doc.name"/>
+                <br/>
+                <strong>Date: </strong>
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>     
+            </t>
+        </t>
+    </template>
+    
+</odoo>

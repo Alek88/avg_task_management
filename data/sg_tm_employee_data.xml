@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sg_tm_employee_1_data" model="sg.tm.employee" forcecreate="True">
+        <field name="name">Employee 1</field>
+        <field name="user_id" ref="sg_task_management.sg_tm_user_1_data"/>
+    </record>  
+
+    <record id="sg_tm_employee_2_data" model="sg.tm.employee" forcecreate="True">
+        <field name="name">Employee 2</field>
+        <field name="user_id" ref="sg_task_management.sg_tm_user_2_data"/>
+    </record>
+      
+</odoo>

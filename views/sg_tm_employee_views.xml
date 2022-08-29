@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="employee_tree_view" model="ir.ui.view">
+        <field name="name">employee.tree.view</field>
+        <field name="model">sg.tm.employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_form_view" model="ir.ui.view">
+        <field name="name">employee.form.view</field>
+        <field name="model">sg.tm.employee</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="active"/>
+                    </group>
+                    <h2><strong><field name="name"/></strong></h2>
+                    <group>
+                        <field name="user_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Tasks">
+                            <field name="task_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook> 
+                </sheet> 
+            </form>
+        </field>
+    </record>
+ 
+    <record id='action_employee' model='ir.actions.act_window'> 
+        <field name='name'>Employee</field>
+        <field name='res_model'>sg.tm.employee</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+              Create your first employee.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_employee'
+                name='Employee'
+                parent='menu_referenced_data'
+                action='action_employee'
+                sequence='100'
+                />
+
+</odoo>

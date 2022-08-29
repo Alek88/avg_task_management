@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="change_res_enpl_wizard_view_form" model="ir.ui.view">
+        <field name="name">change.res.enpl.wizard.view.form</field>
+        <field name="model">change.res.employee.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="responsible_id"/>
+                    <field name="task_ids"/>
+                </group>
+                <footer>
+                    <button name="action_adding_res_employee" 
+                        type="object" 
+                        string="Uppdate" 
+                        class="btn-primary"/>
+                    <button special="cancel" string="Cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id='action_res_empl_wizard' model='ir.actions.act_window'> 
+        <field name='name'>Сhange responsible</field>
+        <field name="context">{"default_responsible_id": active_id}</field>
+        <field name='res_model'>change.res.employee.wizard</field>
+        <field name='view_mode'>form</field> 
+        <field name='target'>new</field> 
+        <field name='binding_model_id' ref='model_sg_tm_employee'/> 
+        <field name='binding_view_types'>form</field> 
+        <field name='binding_type'>action</field> 
+    </record>
+    
+</odoo>

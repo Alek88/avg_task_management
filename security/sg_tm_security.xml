@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="set_time_task" model="ir.rule">
+        <field name="name">
+            User cannot change the time of other people's tasks
+        </field>
+        <field name="model_id" ref="sg_task_management.model_sg_tm_task"/>
+        <field name="domain_force">
+            [('responsible_id.user_id', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('sg_task_management.group_tm_user'))]"/>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="create_billing" model="ir.rule">
+        <field name="name">
+            User can change the billing in which he is responsible
+        </field>
+        <field name="model_id" ref="sg_task_management.model_sg_tm_billing"/>
+        <field name="domain_force">
+            [('employee_id.user_id', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('sg_task_management.group_tm_user'))]"/>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="tm_task_rule_admin" model="ir.rule">
+        <field name="name">Library administrators have full rights on Task</field>
+        <field name="model_id" ref="model_sg_tm_task"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_tm_admin'))]"/>
+    </record>
+
+    <record id="tm_billing_rule_admin" model="ir.rule">
+        <field name="name">Library administrators have full rights on Billing</field>
+        <field name="model_id" ref="model_sg_tm_billing"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_tm_admin'))]"/>
+    </record>
+
+</odoo>

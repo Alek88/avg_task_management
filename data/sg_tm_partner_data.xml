@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sg_tm_partner_1_data" model="res.partner" forcecreate="True">
+        <field name="name">Partner 1 DEMO</field>
+    </record>  
+
+    <record id="sg_tm_partner_2_data" model="res.partner" forcecreate="True">
+        <field name="name">Partner 2 DEMO</field>
+    </record>
+    
+    <record id="sg_tm_partner_3_data" model="res.partner" forcecreate="True">
+        <field name="name">Partner 3 DEMO</field>
+    </record>
+     
+</odoo>

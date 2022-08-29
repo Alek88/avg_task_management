@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_tree_view" model="ir.ui.view">
+        <field name="name">project.tree.view</field>
+        <field name="model">sg.tm.project</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_form_view" model="ir.ui.view">
+        <field name="name">project.form.view</field>
+        <field name="model">sg.tm.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="active"/>
+                </group>
+                <h2><strong><field name="name"/></strong></h2>
+                <field name="partner_id"/>
+                <notebook>
+                    <page string="Tasks">
+                        <field name="task_ids"/>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+    
+    <record id='action_project' model='ir.actions.act_window'> 
+        <field name='name'>Project</field>
+        <field name='res_model'>sg.tm.project</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+              Create your first project.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_project'
+                name='Project'
+                parent='menu_referenced_data'
+                action='action_project'
+                sequence='200'
+                />
+
+</odoo>
