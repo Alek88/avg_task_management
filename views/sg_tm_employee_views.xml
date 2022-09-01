@@ -28,6 +28,9 @@
                         <page string="Tasks">
                             <field name="task_ids" widget="many2many_tags"/>
                         </page>
+                        <page string="Tasks history">
+                            <field name="task_history_ids"/>
+                        </page>
                     </notebook> 
                 </sheet> 
             </form>

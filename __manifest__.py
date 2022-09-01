@@ -11,6 +11,7 @@
         'security/sg_tm_groups.xml',
         'security/ir.model.access.csv',
         'security/sg_tm_security.xml',
+        'wizard/sg_tm_employee_report_wizard_view.xml',
         'wizard/sg_tm_change_res_employee_wizard_views.xml',
         'wizard/sg_tm_set_time_wizard_views.xml',
         'views/sg_tm_menu.xml',

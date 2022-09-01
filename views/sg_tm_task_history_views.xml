@@ -5,10 +5,12 @@
         <field name="name">task.history.tree.view</field>
         <field name="model">sg.tm.task.history</field>
         <field name="arch" type="xml">
-            <tree create="0" default_order="record_date">
-                <field name="record_date"/>
+            <tree create="0" default_order="record_time">
+                <field name="record_time"/>
                 <field name="task_id"/>
+                <field name="status"/>
                 <field name="number_of_minut"/>
+                <field name="comment"/>
                 <field name="responsible_id"/>
                 <field name="partner_id"/>
             </tree>
@@ -22,7 +24,7 @@
             <graph type="bar">
                 <field name="responsible_id" type="row"/>
                 <field name="number_of_minut" type="measure"/>
-                <field name="record_date" type="col" interval="month"/>
+                <field name="record_time" type="col" interval="month"/>
             </graph>
         </field>
      </record> 

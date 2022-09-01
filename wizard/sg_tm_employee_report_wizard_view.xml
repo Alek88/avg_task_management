@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="emp_report_wizard_form" model="ir.ui.view">
+        <field name="name">emp.report.wizard.form</field>
+        <field name="model">settings.emp.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="employee_ids" widget="many2many_tags"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                </group>
+                <footer>
+                    <button name="action_show_report" 
+                        type="object" 
+                        string="Show report" 
+                        class="btn-primary"/>
+                    <button special="cancel" string="Cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id='action_emp_report_wizard' model='ir.actions.act_window'> 
+        <field name='name'>Hours worked</field>
+        <field name="context">{"default_employee_ids": active_ids}</field>
+        <field name='res_model'>settings.emp.report.wizard</field>
+        <field name='view_mode'>form</field> 
+        <field name='target'>new</field> 
+        <field name='binding_model_id' ref='model_sg_tm_employee'/> 
+        <field name='binding_view_types'>list, form</field> 
+        <field name='binding_type'>report</field> 
+    </record>
+    
+</odoo>

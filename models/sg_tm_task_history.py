@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, _
 
 
 class TmTaskHistory(models.Model):
@@ -13,4 +13,11 @@ class TmTaskHistory(models.Model):
                                  readonly=True)
     number_of_minut = fields.Integer(string='Duration')
     responsible_id = fields.Many2one(comodel_name='sg.tm.employee')
-    record_date = fields.Date()
+    record_time = fields.Datetime()
+    status = fields.Selection([('new', _('New')),
+                               ('in_work', _('In work')),
+                               ('testing', _('Testing')),
+                               ('done', _('Done'))],)
+    comment = fields.Char(size=100)
+
+    

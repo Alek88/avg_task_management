@@ -11,6 +11,7 @@
                 <field name="partner_id"/>
                 <field name="task_date"/>
                 <field name="project_id"/>
+                <field name="time_total"/>  
             </tree>
         </field>
     </record>
@@ -30,6 +31,7 @@
                 <field name="project_id"/>
                 <field name="partner_id"/>
                 <field name="author_id"/>
+                <field name="time_total"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click #{kanban_color(record.color.raw_value)}">
@@ -47,8 +49,12 @@
                                         <field name='task_date'/>
                                     </div>
                                     <div>
-                                        <strong>Duration: </strong>
-                                        <field name="number_of_minut"/>
+                                        <strong>Responsible time: </strong>
+                                        <field name="time_total"/>
+                                    </div>
+                                    <div>
+                                        <strong>All time: </strong>
+                                        <field name="time_all"/>
                                     </div> 
                                     <div>
                                         <strong>Responsible: </strong>
@@ -131,10 +137,20 @@
                     <field name="author_id"/>
                     <field name="project_id"/>
                     <field name="partner_id"/>
-                    <field name="number_of_minut"/>
                     <field name="task_date"/>     
                 </group>
+                <group>
+                    <field name="number_of_minut"/>
+                    <field name="comment"/>
+                </group>
+                <group col="4">
+                    <field name="time_total"/>
+                    <field name="time_all"/>
+                </group>
                 <notebook>
+                    <page string="Task history">
+                        <field name="task_history_ids"/>
+                    </page>
                     <page string="Description">
                         <field name="description"/>
                     </page>
@@ -152,7 +168,8 @@
                 <field name="project_id" type="row"/>
                 <field name="responsible_id" type="row"/>
                 <field name="status" type="row"/>
-                <field name="number_of_minut" type="measure"/>
+                <field name="time_total" type="measure"/>
+                <field name="time_all" type="measure"/>
                 <field name="task_date" interval="day" type="col"/>
             </pivot>
         </field>

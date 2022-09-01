@@ -16,16 +16,16 @@
             <field name="header_spacing">0</field>
             <field name="dpi">90</field>
         </record>
-    
-        <report
-            id="action_report_employee"
-            string="Employee report"
-            model="sg.tm.employee"
-            report_type="qweb-html"
-            file="sg_task_management.sg_tm_employee_report"
-            name="sg_task_management.sg_tm_employee_report"
-            paperformat="paperformat_lowmargin"
-            print_report_name="'Employee - %s' % (object.name)"
-        />
-  
+
+        <record id="action_report_employee" model="ir.actions.report">
+            <field name="name">Employee tasks</field>
+            <field name="model">settings.emp.report.wizard</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sg_task_management.sg_tm_employee_report</field>
+            <field name="report_file">sg_task_management.report_sg_tm_employee_report</field>
+            <field name="print_report_name">'Employee - %s' % (object.name)</field>
+            <!--<field name="binding_model_id" ref="model_sg_tm_employee"/> -->
+            <field name="binding_type">report</field>
+        </record>
+
 </odoo>

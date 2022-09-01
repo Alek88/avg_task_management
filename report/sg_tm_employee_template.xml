@@ -4,14 +4,12 @@
 
     <template id="sg_tm_employee_report">
         <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
+
+            <t t-foreach="employee_ids" t-as="employee">
                 <h2>
                     <div style="text-align:right;">
                         <strong>Employee: </strong>
-                        <t t-esc="doc.name"/>
-                        <br/> 
-                        <strong>User: </strong>
-                        <span t-esc="doc.user_id.name"/>        
+                        <t t-esc="employee.get('name')"/>        
                     </div>
                 </h2>
                 <div>
@@ -40,39 +38,33 @@
                                 <t>Description</t>
                             </th>
                         </tr>
-                        
-                        <t t-foreach="doc.task_ids" t-as="task">         
+                            <t t-set="task_history_ids" t-value="employee.get('task_history_ids')"/>
+                            <t t-foreach="task_history_ids" t-as="task_history_id">
+                                <t t-esc="task_history_id"/> 
+                                <!-- 
+                                <t t-set="task_history" 
+                                    t-value="object.env['sg.tm.task.history'].search([('id', 'in', 'task_history_id')], limit=1)"/> 
+                                -->
                             <tr style="border: 1px solid black;"> 
-                                
                                 <th tyle="border: 1px solid black;"> 
-                                    <div t-field="task.project_id"/>
+                                    <!-- 
+                                        <t t-esc="task_history"/>  
+                                    -->   
                                 </th>
-                                <th tyle="border: 1px solid black;"> 
-                                    <div t-field="task.author_id"/>
-                                </th>
-                                <th tyle="border: 1px solid black;"> 
-                                    <div t-field="task.status"/>
-                                </th>
-                                <th tyle="border: 1px solid black;"> 
-                                    <div t-field="task.task_date"/>
-                                </th> 
-                                <th tyle="border: 1px solid black;"> 
-                                    <div t-field="task.number_of_minut"/>
-                                </th> 
-                                <th tyle="border: 1px solid black;"> 
-                                    <div t-field="task.description"/>
-                                </th>     
                             </tr>
                         </t>         
                     </table>
                 </div>
                 <br/>
-                <strong>Full name: </strong>
+                <!-- 
+                 <strong>Full name: </strong>
                 <t t-esc="doc.name"/>
                 <br/>
                 <strong>Date: </strong>
                 <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>     
-            </t>
+              
+                -->
+                 </t>
         </t>
     </template>
     
