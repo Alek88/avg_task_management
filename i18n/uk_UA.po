@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-28 14:16+0000\n"
-"PO-Revision-Date: 2022-08-28 17:40+0300\n"
+"POT-Creation-Date: 2022-09-06 07:03+0000\n"
+"PO-Revision-Date: 2022-09-06 10:05+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: \n"
 "X-Generator: Poedit 3.1.1\n"
 
 #. module: sg_task_management
@@ -26,35 +26,46 @@ msgstr "‘Співробітник - %s’ % (object.name)"
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid ""
 "<br/>\n"
+"                        <strong>End time: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Закінчення: </strong>"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
+msgid ""
+"<br/>\n"
+"                        <strong>Start time: </strong>"
+msgstr ""
+"<br/>\n"
+"                        <strong>Початок: </strong>"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
+msgid ""
+"<br/>\n"
 "                    <strong>Tasks: </strong>"
 msgstr ""
 "<br/>\n"
-"                    <strong>Задача:: </strong>"
+"                    <strong>Задачі: </strong>"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid ""
 "<br/>\n"
-"                <strong>Date: </strong>"
+"                <strong>Date report: </strong>"
 msgstr ""
 "<br/>\n"
-"                <strong>Дата: </strong>"
-
-#. module: sg_task_management
-#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
-msgid ""
-"<br/>\n"
-"                <strong>Full name: </strong>"
-msgstr ""
+"                <strong>Дата звіту: </strong>"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid ""
 "<br/> \n"
-"                        <strong>User: </strong>"
+"                 <strong>Full time: </strong>"
 msgstr ""
 "<br/> \n"
-"                        <strong>Користувач: </strong>"
+"                 <strong>Загальний час: </strong>"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_res_partner_view_button
@@ -63,18 +74,8 @@ msgstr "<span class=\"o_stat_text\">Задачі</span>"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
-msgid "<span>Set time</span>"
-msgstr "<span>Встановити час</span>"
-
-#. module: sg_task_management
-#: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
-msgid "<strong>Date: </strong>"
-msgstr "<strong>Дата: </strong>"
-
-#. module: sg_task_management
-#: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
-msgid "<strong>Duration: </strong>"
-msgstr "<strong>Тривалість: </strong>"
+msgid "<span>Add time</span>"
+msgstr "<span>Додати час</span>"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
@@ -83,13 +84,8 @@ msgstr "<strong>Співробітник: </strong>"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
-msgid "<strong>Responsible: </strong>"
-msgstr "<strong>Відповідальний: </strong>"
-
-#. module: sg_task_management
-#: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
-msgid "<strong>Task: </strong>"
-msgstr "<strong>Задача: </strong>"
+msgid "<strong>Time: </strong>"
+msgstr "<strong>Час: </strong>"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__active
@@ -99,7 +95,7 @@ msgstr "<strong>Задача: </strong>"
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__active
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__active
 msgid "Active"
-msgstr "Активний"
+msgstr "Архівний"
 
 #. module: sg_task_management
 #: model:res.groups,name:sg_task_management.group_tm_admin
@@ -112,8 +108,12 @@ msgid "Administrators of the Task management (full rights)"
 msgstr "Адміністратор Управління задачами (повні права)"
 
 #. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__time_all
+msgid "All time"
+msgstr "Загальний час"
+
+#. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__author_id
-#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid "Author"
 msgstr "Автор"
 
@@ -126,14 +126,23 @@ msgstr "Білінг"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.change_res_enpl_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:sg_task_management.emp_report_wizard_form
 #: model_terms:ir.ui.view,arch_db:sg_task_management.set_time_wizard_view_form
 msgid "Cancel"
-msgstr "Відміні"
+msgstr "Відміна"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__color
 msgid "Color"
 msgstr "Колір"
+
+#. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__comment
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__comment
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__comment
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
+msgid "Comment"
+msgstr "Коментар"
 
 #. module: sg_task_management
 #: model_terms:ir.actions.act_window,help:sg_task_management.action_billing
@@ -163,6 +172,7 @@ msgstr "Створіть свою першу задачу."
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard__create_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__create_uid
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__create_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__create_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__create_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__create_uid
@@ -175,6 +185,7 @@ msgstr "Стоврити"
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard__create_date
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__create_date
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__create_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__create_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__create_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__create_date
@@ -182,7 +193,7 @@ msgstr "Стоврити"
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__create_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Створено"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__currency_id
@@ -202,7 +213,6 @@ msgstr "Видалити"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__description
-#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 #: model_terms:ir.ui.view,arch_db:sg_task_management.task_custom_form_kanban
 msgid "Description"
 msgstr "Описання"
@@ -210,6 +220,7 @@ msgstr "Описання"
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard__display_name
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__display_name
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__display_name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__display_name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__display_name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__display_name
@@ -221,6 +232,7 @@ msgstr "Показати найменування"
 
 #. module: sg_task_management
 #: code:addons/sg_task_management/models/sg_tm_task.py:0
+#: code:addons/sg_task_management/models/sg_tm_task_history.py:0
 #, python-format
 msgid "Done"
 msgstr "Виконано"
@@ -241,6 +253,8 @@ msgstr "Редагувати"
 #. module: sg_task_management
 #: model:ir.actions.act_window,name:sg_task_management.action_employee
 #: model:ir.model,name:sg_task_management.model_sg_tm_employee
+#: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__employee_id
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__employee_ids
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__employee_id
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__employee_id
 #: model:ir.ui.menu,name:sg_task_management.menu_employee
@@ -249,8 +263,8 @@ msgstr "Співробітник"
 
 #. module: sg_task_management
 #: model:ir.actions.report,name:sg_task_management.action_report_employee
-msgid "Employee report"
-msgstr "Звіт співробітника"
+msgid "Employee tasks"
+msgstr "Задачі співробітника"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__end_date
@@ -258,8 +272,24 @@ msgid "End Date"
 msgstr "Дата закінчення"
 
 #. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__end_time
+msgid "End Time"
+msgstr "Дата початку"
+
+#. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__field_visibility
+msgid "Field Visibility"
+msgstr "Видимість полів"
+
+#. module: sg_task_management
+#: model:ir.actions.act_window,name:sg_task_management.action_emp_report_wizard
+msgid "Hours worked"
+msgstr "Відпрацьовані години"
+
+#. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard__id
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__id
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__id
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__id
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__id
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__id
@@ -271,6 +301,7 @@ msgstr "Идентифікатор"
 
 #. module: sg_task_management
 #: code:addons/sg_task_management/models/sg_tm_task.py:0
+#: code:addons/sg_task_management/models/sg_tm_task_history.py:0
 #, python-format
 msgid "In work"
 msgstr "В роботі"
@@ -278,6 +309,7 @@ msgstr "В роботі"
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard____last_update
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard____last_update
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard____last_update
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing____last_update
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee____last_update
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price____last_update
@@ -290,6 +322,7 @@ msgstr "Остання зміна"
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard__write_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__write_uid
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__write_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__write_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__write_uid
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__write_uid
@@ -302,6 +335,7 @@ msgstr "Останне оновлення"
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_change_res_employee_wizard__write_date
 #: model:ir.model.fields,field_description:sg_task_management.field_set_time_wizard__write_date
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__write_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__write_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__write_date
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__write_date
@@ -312,20 +346,52 @@ msgid "Last Updated on"
 msgstr "Оснанне оновлення"
 
 #. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.task_custom_form_kanban
+msgid "Main"
+msgstr "Меню"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
+msgid "Menu"
+msgstr "Меню"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_task_search
+msgid "My task"
+msgstr "Мої задачі"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_task_search
+msgid "My unfinished tasks"
+msgstr "Мої невиконані задачі"
+
+#. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_price__name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_project__name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__name
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__name
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid "Name"
 msgstr "Найменування"
 
 #. module: sg_task_management
 #: code:addons/sg_task_management/models/sg_tm_task.py:0
+#: code:addons/sg_task_management/models/sg_tm_task_history.py:0
 #, python-format
 msgid "New"
 msgstr "Новий"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.task_kanban_view
+msgid "Next status"
+msgstr "Наступний статус"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_task_search
+msgid "Not completed"
+msgstr "Не виконані"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__partner_id
@@ -356,9 +422,9 @@ msgid "Project"
 msgstr "Проект"
 
 #. module: sg_task_management
-#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__record_date
-msgid "Record Date"
-msgstr "Дата запису"
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__record_time
+msgid "Record Time"
+msgstr "Час запису"
 
 #. module: sg_task_management
 #: model:ir.ui.menu,name:sg_task_management.menu_referenced_data
@@ -370,7 +436,12 @@ msgstr "Справочні дані"
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__responsible_id
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__responsible_id
 msgid "Responsible"
-msgstr "Вібповідальний"
+msgstr "Відповідальний"
+
+#. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__time_total
+msgid "Responsible time"
+msgstr "Час відповідального"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.set_time_wizard_view_form
@@ -385,15 +456,31 @@ msgid "Set time"
 msgstr "Встановити час"
 
 #. module: sg_task_management
+#: model:ir.model,name:sg_task_management.model_settings_emp_report_wizard
+msgid "Settings employee report wizard"
+msgstr "Налаштування  звіту робітника"
+
+#. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.emp_report_wizard_form
+msgid "Show report"
+msgstr "Показати звіт"
+
+#. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__start_date
 msgid "Start Date"
 msgstr "Дата початку"
 
 #. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_settings_emp_report_wizard__start_time
+msgid "Start Time"
+msgstr "Дата закінчення"
+
+#. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__status
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task_history__status
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid "Status"
-msgstr "Ствтус"
+msgstr "Статус"
 
 #. module: sg_task_management
 #: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_billing__summ
@@ -414,6 +501,12 @@ msgid "Task"
 msgstr "Задача"
 
 #. module: sg_task_management
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_employee__task_history_ids
+#: model:ir.model.fields,field_description:sg_task_management.field_sg_tm_task__task_history_ids
+msgid "Task History"
+msgstr "Історія задач"
+
+#. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.sg_tm_employee_report
 msgid "Task date"
 msgstr "Дата задачі"
@@ -422,6 +515,7 @@ msgstr "Дата задачі"
 #: model:ir.actions.act_window,name:sg_task_management.action_task_history
 #: model:ir.model,name:sg_task_management.model_sg_tm_task_history
 #: model:ir.ui.menu,name:sg_task_management.menu_task_history
+#: model_terms:ir.ui.view,arch_db:sg_task_management.task_custom_form_kanban
 msgid "Task history"
 msgstr "Історія задач"
 
@@ -443,7 +537,13 @@ msgid "Tasks"
 msgstr "Задачі"
 
 #. module: sg_task_management
+#: model_terms:ir.ui.view,arch_db:sg_task_management.employee_form_view
+msgid "Tasks history"
+msgstr "Історія задач"
+
+#. module: sg_task_management
 #: code:addons/sg_task_management/models/sg_tm_task.py:0
+#: code:addons/sg_task_management/models/sg_tm_task_history.py:0
 #, python-format
 msgid "Testing"
 msgstr "Тестування"
@@ -452,7 +552,7 @@ msgstr "Тестування"
 #: model:ir.model.fields,help:sg_task_management.field_sg_tm_billing__currency_id
 #: model:ir.model.fields,help:sg_task_management.field_sg_tm_price__currency_id
 msgid "The payment's currency."
-msgstr ""
+msgstr "Валюта платежа"
 
 #. module: sg_task_management
 #: model_terms:ir.ui.view,arch_db:sg_task_management.change_res_enpl_wizard_view_form
@@ -472,23 +572,26 @@ msgstr "Рівні достува користувачів для управлі
 
 #. module: sg_task_management
 #: model:res.groups,comment:sg_task_management.group_tm_user
-msgid "Users of the Library"
-msgstr "Користувачі Управління задачами"
+msgid "Users of the Task management"
+msgstr "Користувач Управління задачами"
 
 #. module: sg_task_management
 #: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task__status__in_work
+#: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task_history__status__in_work
 msgid "В роботі"
-msgstr "В роботі"
+msgstr ""
 
 #. module: sg_task_management
 #: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task__status__done
+#: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task_history__status__done
 msgid "Виконано"
-msgstr "Виконано"
+msgstr ""
 
 #. module: sg_task_management
 #: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task__status__new
+#: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task_history__status__new
 msgid "Новий"
-msgstr "Новий"
+msgstr ""
 
 #. module: sg_task_management
 #: model:ir.model,name:sg_task_management.model_change_res_employee_wizard
@@ -502,5 +605,6 @@ msgstr "Змінити відповідального"
 
 #. module: sg_task_management
 #: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task__status__testing
+#: model:ir.model.fields.selection,name:sg_task_management.selection__sg_tm_task_history__status__testing
 msgid "Тестування"
-msgstr "Тестування"
+msgstr ""

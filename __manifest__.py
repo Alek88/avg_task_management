@@ -4,7 +4,7 @@
         The module is designed to calculate the time for completed tasks.""",
     'author': "Aleksander Huryn",
     'category': 'Helpdesk',
-    'version': '15.0.1.0.1',
+    'version': '15.0.2.0.1',
     'license': 'LGPL-3',
     'depends': ['base'],
     'data': [

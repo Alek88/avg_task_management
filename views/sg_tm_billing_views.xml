@@ -33,11 +33,12 @@
                         <field name="partner_id"/>  
                     </group>
                     <group>
-                        <field name="employee_id"/> 
+                        <field name="employee_id"/>
+                        <field name="field_visibility" invisible="1"/> 
                     </group>
                     <group col="6">
-                        <field name="price"/> 
-                        <field name="summ"/>
+                        <field name="price" attrs="{'invisible': [('field_visibility', '=', True)]}"/> 
+                        <field name="summ" attrs="{'invisible': [('field_visibility', '=', True)]}"/>
                         <field name="currency_id"/>    
                     </group>  
                 </sheet>

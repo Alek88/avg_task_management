@@ -12,6 +12,7 @@ class TestAccessRights(TestCommon):
             self.env['sg.tm.task'].with_user(self.tm_user).create(
                 {'name': 'Demo Task 1',
                  'project_id': self.project.id,
+                 'partner_id': self.partner.id,
                  'responsible_id': self.employee_admin.id,
                  'task_date': fields.Date.today()})
 
@@ -25,6 +26,7 @@ class TestAccessRights(TestCommon):
         task = self.env['sg.tm.task'].with_user(self.tm_admin).create(
             {'name': 'Demo Employee',
              'project_id': self.project.id,
+             'partner_id': self.partner.id,
              'responsible_id': self.employee_admin.id,
              'task_date': fields.Date.today()})
         task.with_user(self.tm_admin).read()

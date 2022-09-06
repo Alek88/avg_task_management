@@ -2,7 +2,8 @@ from odoo import models, fields
 
 
 class TmChangeResEmployeeWizard(models.TransientModel):
-    """group change of responsible
+    """Group change of responsible
+    The wizard is called from the employee model
     """
     _name = 'change.res.employee.wizard'
     _description = 'Сhange of responsible employee'

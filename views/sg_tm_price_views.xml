@@ -8,7 +8,8 @@
             <tree editable="bottom">
                 <field name="partner_id"/>
                 <field name="employee_id"/>
-                <field name="price"/>
+                <field name="price"
+                    groups="base.group_system, sg_task_management.group_tm_admin"/>
                 <field name="currency_id"/>
             </tree>
         </field>

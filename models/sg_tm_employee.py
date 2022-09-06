@@ -14,5 +14,5 @@ class TmEmployee(models.Model):
                                inverse_name='responsible_id',
                                readonly=True)
     task_history_ids = fields.One2many(comodel_name='sg.tm.task.history',
-                               inverse_name='responsible_id',
-                               readonly=True)
+                                       inverse_name='responsible_id',
+                                       readonly=True)

@@ -3,27 +3,35 @@
 <odoo>
 
     <template id="sg_tm_employee_report">
-        <t t-call="web.html_container">
-
+        <t t-call="web.html_container">     
             <t t-foreach="employee_ids" t-as="employee">
                 <h2>
                     <div style="text-align:right;">
-                        <strong>Employee: </strong>
-                        <t t-esc="employee.get('name')"/>        
+                        <strong>Employee: </strong> 
+                        <t t-esc="employee.get('name')"/>
+                        <br/>
+                        <strong>Start time: </strong> 
+                        <t t-esc="form.get('start_time')"/>
+                        <br/>
+                        <strong>End time: </strong> 
+                        <t t-esc="form.get('end_time')"/>    
                     </div>
                 </h2>
                 <div>
                     <br/>
                     <strong>Tasks: </strong>
                     <table class="table-bordered"
-                           style="border: 1px solid black;"
-                           width="100%">
+                        style="border: 1px solid black;"
+                        width="100%">
                         <tr>
+                            <th>
+                                <t>N</t>
+                            </th>
                             <th>
                                 <t>Project</t>
                             </th>
                             <th>
-                                <t>Author</t>
+                                <t>Name</t>
                             </th>
                             <th>
                                 <t>Status</t>
@@ -35,36 +43,46 @@
                                 <t>Duration</t>
                             </th>
                             <th>
-                                <t>Description</t>
-                            </th>
-                        </tr>
-                            <t t-set="task_history_ids" t-value="employee.get('task_history_ids')"/>
-                            <t t-foreach="task_history_ids" t-as="task_history_id">
-                                <t t-esc="task_history_id"/> 
-                                <!-- 
-                                <t t-set="task_history" 
-                                    t-value="object.env['sg.tm.task.history'].search([('id', 'in', 'task_history_id')], limit=1)"/> 
-                                -->
+                                <t>Comment</t>
+                            </th>  
+                        </tr>    
+                        <t t-set="task_history_ids" t-value="employee.get('task_hist_ids')"/>
+                        <t t-set="str_num" t-value="1"/>
+                        <t t-foreach="task_history_ids" t-as="task_history_id"> 
                             <tr style="border: 1px solid black;"> 
                                 <th tyle="border: 1px solid black;"> 
-                                    <!-- 
-                                        <t t-esc="task_history"/>  
-                                    -->   
+                                    <t t-esc="str_num"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <t t-esc="task_history_id.get('project_name')"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <t t-esc="task_history_id.get('task_name')"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <t t-esc="task_history_id.get('status')"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <t t-esc="task_history_id.get('create_date')"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <t t-esc="task_history_id.get('number_of_minut')"/>
+                                </th>
+                                <th tyle="border: 1px solid black;"> 
+                                    <t t-esc="task_history_id.get('comment')"/>
                                 </th>
                             </tr>
-                        </t>         
+                            <t t-set="str_num" t-value="str_num+1"/>
+                         </t>     
                     </table>
                 </div>
+                <br/> 
+                 <strong>Full time: </strong>
+                 <t t-esc="employee.get('work_time')"/>
                 <br/>
-                <!-- 
-                 <strong>Full name: </strong>
-                <t t-esc="doc.name"/>
-                <br/>
-                <strong>Date: </strong>
-                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>     
-              
-                -->
-                 </t>
+                <strong>Date report: </strong>
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>
+                </t>
         </t>
     </template>
     

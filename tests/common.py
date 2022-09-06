@@ -40,8 +40,11 @@ class TestCommon(TransactionCase):
             'name': 'Demo Task',
             'project_id': self.project.id,
             'responsible_id': self.employee_admin.id,
+            'partner_id': self.partner.id,
             'status': self.status,
-            'task_date': fields.Date.today()})
+            'task_date': fields.Date.today(),
+            'time_total': 0,
+            'time_all': 0})
         self.billing = self.env['sg.tm.billing'].create({
             'name': 'Demo Balling',
             'project_id': self.project.id,

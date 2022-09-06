@@ -28,7 +28,7 @@
         <field name='res_model'>settings.emp.report.wizard</field>
         <field name='view_mode'>form</field> 
         <field name='target'>new</field> 
-        <field name='binding_model_id' ref='model_sg_tm_employee'/> 
+        <field name='binding_model_id' ref='model_sg_tm_employee'/>
         <field name='binding_view_types'>list, form</field> 
         <field name='binding_type'>report</field> 
     </record>

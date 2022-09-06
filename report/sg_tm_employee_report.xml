@@ -19,12 +19,11 @@
 
         <record id="action_report_employee" model="ir.actions.report">
             <field name="name">Employee tasks</field>
-            <field name="model">settings.emp.report.wizard</field>
+            <field name="model">sg.tm.employee</field>
             <field name="report_type">qweb-html</field>
             <field name="report_name">sg_task_management.sg_tm_employee_report</field>
             <field name="report_file">sg_task_management.report_sg_tm_employee_report</field>
             <field name="print_report_name">'Employee - %s' % (object.name)</field>
-            <!--<field name="binding_model_id" ref="model_sg_tm_employee"/> -->
             <field name="binding_type">report</field>
         </record>
 

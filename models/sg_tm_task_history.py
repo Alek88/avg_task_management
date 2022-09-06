@@ -2,7 +2,8 @@ from odoo import models, fields, _
 
 
 class TmTaskHistory(models.Model):
-    """The object is used to keep a history of tasks
+    """The object is used to keep a history of tasks.
+    This model accumulates key changes in tasks
     """
     _name = 'sg.tm.task.history'
     _description = 'Task history'
@@ -19,5 +20,3 @@ class TmTaskHistory(models.Model):
                                ('testing', _('Testing')),
                                ('done', _('Done'))],)
     comment = fields.Char(size=100)
-
-    

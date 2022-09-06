@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<odoo noupdate="1">
 
-    <record id="sg_tm_billing_1_demo" model="sg.tm.billing">
+    <record id="sg_tm_billing_1_demo" model="sg.tm.billing" forcecreate="1">
         <field name="name">Billing_1 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_1_data"/>
         <field name="start_date" eval="datetime.now()"/>
@@ -9,7 +9,7 @@
         <field name="employee_id" ref="sg_task_management.sg_tm_employee_1_data"/>
     </record>
     
-    <record id="sg_tm_billing_2_demo" model="sg.tm.billing">
+    <record id="sg_tm_billing_2_demo" model="sg.tm.billing" forcecreate="1">
         <field name="name">Billing_2 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_2_data"/>
         <field name="start_date" eval="datetime.now()"/>
@@ -17,7 +17,7 @@
         <field name="employee_id" ref="sg_task_management.sg_tm_employee_1_data"/>
     </record> 
 
-    <record id="sg_tm_billing_3_demo" model="sg.tm.billing">
+    <record id="sg_tm_billing_3_demo" model="sg.tm.billing" forcecreate="1">
         <field name="name">Billing_3 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_3_data"/>
         <field name="start_date" eval="datetime.now()"/>

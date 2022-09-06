@@ -1,49 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<odoo noupdate="1">
     
-    <record id="sg_tm_task_1_demo" model="sg.tm.task">
+    <record id="sg_tm_task_1_demo" model="sg.tm.task" forcecreate="1">
         <field name="name">Support_1 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_1_data"/>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_1_data"/>
         <field name="responsible_id" ref="sg_task_management.sg_tm_employee_1_data"/>
         <field name="status">done</field>
         <field name="number_of_minut">60</field>  
     </record>
 
-    <record id="sg_tm_task_2_demo" model="sg.tm.task">
+    <record id="sg_tm_task_2_demo" model="sg.tm.task" forcecreate="1">
         <field name="name">Support_2 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_1_data"/>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_1_data"/>
         <field name="responsible_id" ref="sg_task_management.sg_tm_employee_2_data"/>
         <field name="status">done</field>
         <field name="number_of_minut">80</field>  
     </record>
 
-    <record id="sg_tm_task_3_demo" model="sg.tm.task">
+    <record id="sg_tm_task_3_demo" model="sg.tm.task" forcecreate="1">
         <field name="name">Support_3 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_2_data"/>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_2_data"/>
         <field name="responsible_id" ref="sg_task_management.sg_tm_employee_1_data"/>
-        <field name="status">done</field>
+        <field name="status">testing</field>
         <field name="number_of_minut">40</field>  
     </record>
 
-    <record id="sg_tm_task_4_demo" model="sg.tm.task">
+    <record id="sg_tm_task_4_demo" model="sg.tm.task" forcecreate="1">
         <field name="name">Support_4 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_2_data"/>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_2_data"/>
         <field name="responsible_id" ref="sg_task_management.sg_tm_employee_2_data"/>
-        <field name="status">done</field>
+        <field name="status">in_work</field>
         <field name="number_of_minut">30</field>  
     </record>
 
-    <record id="sg_tm_task_5_demo" model="sg.tm.task">
+    <record id="sg_tm_task_5_demo" model="sg.tm.task" forcecreate="1">
         <field name="name">Support_5 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_3_data"/>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_3_data"/>
         <field name="responsible_id" ref="sg_task_management.sg_tm_employee_1_data"/>
         <field name="status">done</field>
         <field name="number_of_minut">55</field>  
     </record>
 
-    <record id="sg_tm_task_6_demo" model="sg.tm.task">
+    <record id="sg_tm_task_6_demo" model="sg.tm.task" forcecreate="1">
         <field name="name">Support_6 DEMO</field>
         <field name="project_id" ref="sg_task_management.sg_tm_project_3_data"/>
+        <field name="partner_id" ref="sg_task_management.sg_tm_partner_3_data"/>
         <field name="responsible_id" ref="sg_task_management.sg_tm_employee_2_data"/>
         <field name="status">testing</field>
         <field name="number_of_minut">20</field>  

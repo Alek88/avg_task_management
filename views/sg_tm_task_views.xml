@@ -11,7 +11,8 @@
                 <field name="partner_id"/>
                 <field name="task_date"/>
                 <field name="project_id"/>
-                <field name="time_total"/>  
+                <field name="time_total"/>
+                <field name="time_all"/>  
             </tree>
         </field>
     </record>
@@ -20,7 +21,10 @@
         <field name="name">task.kanban.view</field>
         <field name="model">sg.tm.task</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="project_id" quick_create_view="sg_task_management.task_custom_form_kanban" sample="1">
+            <kanban default_group_by="project_id" 
+            quick_create_view="sg_task_management.task_custom_form_kanban" 
+            sample="1"
+            records_draggable="0">
                 <field name='name'/>
                 <field name="status"/>
                 <field name="task_date"/>
@@ -38,35 +42,43 @@
                             <div class="o_kanban_card_header_title">
                                 <div>
                                     <div class="float-right text-right">
-                                        <h3><field name='status'/></h3>
+                                        <button class=""
+                                        string="Next status"
+                                        name='action_next_status'
+                                        type="object"
+                                        >
+                                    <span><field name='status'/></span>
+                                    </button>
+                                        
                                     </div>
                                     <div>
-                                        <strong>Task: </strong>
-                                        <field name='name'/> 
+                                        <strong><field name='name'/></strong>
                                     </div>
                                     <div>
-                                        <strong>Date: </strong>
                                         <field name='task_date'/>
                                     </div>
                                     <div>
-                                        <strong>Responsible time: </strong>
-                                        <field name="time_total"/>
+                                        <field name='responsible_id'/>
                                     </div>
                                     <div>
-                                        <strong>All time: </strong>
-                                        <field name="time_all"/>
-                                    </div> 
-                                    <div>
-                                        <strong>Responsible: </strong>
-                                        <field name='responsible_id'/>
-                                    </div>   
+                                        <strong>Time: </strong>
+                                        <field name="time_total"/> 
+                                            (<field name="time_all"/>)
+                                    </div>      
                                 </div>    
                             </div>
 
-                            <div class="col-xs-12" style="height: 15px;"/>
-                          
-                            <div class="o_dropdown_kanban dropdown">
-                                <a class="dropdown-toggle btn"
+                            <div class="float-right text-right">
+                                <button class="btn btn-primary"
+                                        string="Set time"
+                                        name='%(sg_task_management.action_set_time_wizard)d'
+                                        type="action">
+                                    <span>Add time</span>
+                                </button>
+                            </div> 
+
+                            <div class="o_dropdown_kanban dropdown" title="Menu">
+                                <a role="button" class="dropdown-toggle btn"
                                     data-toggle="dropdown" href="#">
                                     <span class="fa fa-ellipsis-v" aria-hidden="true"/>
                                 </a>
@@ -81,47 +93,13 @@
                                         <ul class="oe_kanban_colorpicker" data-field="color"/>  
                                     </div>
                                 </div>
-                            </div> 
-                            
-                            <div class="container o_kanban_card_content">
-                                <div class="row">
-                                    <div class="col-6 o_kanban_primary_left">
-                                        <button class="btn btn-primary"
-                                                string="Set time"
-                                                name='%(sg_task_management.action_set_time_wizard)d'
-                                                groups='sg_task_management.group_tm_user'
-                                                type="action">
-                                            <span>Set time</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>                       
+                            </div>           
                         </div>
                     </t>
                 </templates>
             </kanban>
         </field>
     </record> 
-
-    <record id="task_form_view" model="ir.ui.view">
-        <field name="name">task.form.view</field>
-        <field name="model">sg.tm.task</field>
-        <field name="arch" type="xml">
-            <form>
-                <field name="active"/>
-                <group>
-                    <field name="name"/>
-                    <field name="project_id"/>
-                    <field name="author_id"/>
-                    <field name="responsible_id"/>
-                    <field name="partner_id" readonly="1"/>
-                    <field name="task_date"/>
-                    <field name="number_of_minut"/>
-                    <field name="description"/>
-                </group>  
-            </form>
-        </field>
-    </record>
 
     <record id="task_custom_form_kanban" model="ir.ui.view">
         <field name="name">task.custom.form.kanban</field>
@@ -131,31 +109,35 @@
                 <header>
                     <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
                 </header>
-                <h2><strong><field name="name"/></strong></h2>
-                <group col="4">
-                    <field name="responsible_id"/>
-                    <field name="author_id"/>
-                    <field name="project_id"/>
-                    <field name="partner_id"/>
-                    <field name="task_date"/>     
-                </group>
-                <group>
-                    <field name="number_of_minut"/>
-                    <field name="comment"/>
-                </group>
-                <group col="4">
-                    <field name="time_total"/>
-                    <field name="time_all"/>
-                </group>
-                <notebook>
-                    <page string="Task history">
-                        <field name="task_history_ids"/>
-                    </page>
-                    <page string="Description">
-                        <field name="description"/>
-                    </page>
-                </notebook>
-                
+                <list>
+                    <field name="active"/>
+                    <h3><strong><field name="name"/></strong></h3>
+                    <notebook>
+                        <page string="Main">
+                            <group col="4">
+                                <field name="project_id" attrs="{'readonly': [('task_history_ids', '!=', [])]}"/>
+                                <field name="partner_id"/>
+                                <field name="responsible_id"/>
+                                <field name="task_date"/>     
+                            </group>
+                            <group>
+                                <field name="number_of_minut"/>
+                                <field name="comment"/>
+                            </group>
+                            <group col="4">
+                                <field name="time_total"/>
+                                <field name="time_all"/>
+                            </group>
+                            <field name="author_id"/> 
+                        </page>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Task history">
+                            <field name="task_history_ids"/>
+                        </page>
+                    </notebook>
+                </list>
             </form>
          </field>
      </record>
@@ -173,7 +155,22 @@
                 <field name="task_date" interval="day" type="col"/>
             </pivot>
         </field>
-     </record> 
+     </record>
+     
+    <record id="sg_tm_task_search" model="ir.ui.view">
+        <field name="name">sg.tm.task.search</field>
+        <field name="model">sg.tm.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="responsible_id"/>
+                <field name="status" type="row"/>
+                <filter string="Not completed" name="filter_name" domain="[('status', '!=', 'done')]"/>
+                <filter string="My task" name="filter_name" domain="[('responsible_id.user_id', '=', uid)]"/>
+                <filter string="My unfinished tasks" name="filter_name" 
+                        domain="[('responsible_id.user_id', '=', uid),('status', '!=', 'done')]"/>      
+            </search>
+        </field>
+    </record>
     
     <record id='action_task' model='ir.actions.act_window'> 
         <field name='name'>Task</field>

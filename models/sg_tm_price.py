@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class TmPrice(models.Model):
-    """designed to estimate the cost of work performed
+    """Designed to estimate the cost of work performed
     """
     _name = 'sg.tm.price'
     _description = 'Price'
@@ -16,5 +16,6 @@ class TmPrice(models.Model):
     currency_id = fields.Many2one(comodel_name='res.currency',
                                   string='Currency',
                                   store=True,
+                                  required=True,
                                   readonly=False,
                                   help="The payment's currency.")
